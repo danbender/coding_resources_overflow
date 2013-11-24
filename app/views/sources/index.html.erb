@@ -1,0 +1,8 @@
+<h1>source#index</h1>
+<%= link_to "Add a source", new_source_path %>
+
+<ul>
+  <% @sources.each do |source| %>
+    <li><%= link_to source.title, url_with_protocol(source.url), target: "_blank" %></li>
+  <% end %>
+</ul>
