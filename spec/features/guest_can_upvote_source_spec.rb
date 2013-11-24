@@ -4,7 +4,7 @@ feature 'upvote of a source' do
   before(:each) do
     @test_source = Source.new
     @test_source.title = "Javascript is awesome"
-    @test_source.url = "www.javascript.com"
+    @test_source.url = "http://www.javascript.com"
     @test_source.save
   end
 
