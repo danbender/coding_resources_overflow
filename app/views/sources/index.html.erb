@@ -1,2 +1,9 @@
-<h1>hello kenny</h1>
+<h1>source#index</h1>
 <%= link_to "Add a source", new_source_path %>
+
+<ul>
+  <% @sources.each do |source| %>
+    <li><%= source.title %></li>
+    <li><%= source.url %></li>
+  <% end %>
+</ul>
