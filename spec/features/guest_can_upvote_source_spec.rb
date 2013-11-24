@@ -11,7 +11,7 @@ feature 'upvote of a source' do
   context 'guest can upvote a source' do
     it "allows guests to upvote a source" do
       visit '/'
-      find('.upvote-button').click
+      find('.upvote_count').click
       page.should have_content(1)
     end
   end
