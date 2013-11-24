@@ -4,5 +4,7 @@
 <ul>
   <% @sources.each do |source| %>
     <li><%= link_to source.title, url_with_protocol(source.url), target: "_blank" %></li>
+    <li id="source-<%=source.id%>"><%= source.upvote_count %></li>
+    <li><%= button_tag "Up!", class: "upvote-count", value: "#{source.id}" %></li>
   <% end %>
 </ul>
