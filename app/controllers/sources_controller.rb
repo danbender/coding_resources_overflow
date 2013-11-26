@@ -1,6 +1,6 @@
 class SourcesController < ApplicationController
   def index
-    @sources = Source.all
+    @sources = Source.order('upvote_count DESC')
   end
 
   def new
@@ -19,7 +19,6 @@ class SourcesController < ApplicationController
     source = Source.find(params[:id].to_i)
     source.upvote_count += 1
     source.save
-    # redirect_to "/"
     render :json => {source_id: source.id, current_count: source.upvote_count}
   end
 
