@@ -1,6 +1,6 @@
 class SourcesController < ApplicationController
   def index
-    @sources = Source.order('upvote_count DESC')
+    @sorted_sources = Source.order('upvote_count DESC')
   end
 
   def new
@@ -19,7 +19,9 @@ class SourcesController < ApplicationController
     source = Source.find(params[:id].to_i)
     source.upvote_count += 1
     source.save
-    render :json => {source_id: source.id, current_count: source.upvote_count}
+
+    @sorted_sources = Source.order('upvote_count DESC')
+    render :partial => 'sorted_sources_list', :locals => {:sorted_sources => @sorted_sources}
   end
 
 end
