@@ -15,11 +15,16 @@ ApplicationController.prototype.updateUpvoteCount = function(sourceId) {
     url: '/sources/'+sourceId,
     type: 'put'
   }).done(function(sorted_sources_list) {
-    $('ul li').remove()
-    $('ul').append(sorted_sources_list)
+    self.updateSourcesList(sorted_sources_list)
     self.attachListenersToUpvoteButton()
   })
 }
+
+ApplicationController.prototype.updateSourcesList = function(sorted_sources_list) {
+  $('ul li').remove()
+  $('ul').append(sorted_sources_list)
+}
+
 $(document).ready(function() {
   applicationController = new ApplicationController
   applicationController.attachListenersToUpvoteButton()
