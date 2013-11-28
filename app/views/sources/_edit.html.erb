@@ -1,0 +1,9 @@
+<h1> Edit Your Source </h1>
+
+<%= form_for @source_to_edit do |f| %>
+  <%= f.label :title, value: @source_to_edit.title %>
+  <%= f.text_field :title %>
+  <%= f.label :url, value: @source_to_edit.title %>
+  <%= f.text_field :url %>
+  <%= f.submit %>
+<% end %>

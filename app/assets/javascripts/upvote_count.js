@@ -17,6 +17,14 @@ ApplicationController.prototype.attachListenersToDeleteButton = function() {
   })
 }
 
+ApplicationController.prototype.attachListenersToEditButton = function() {
+  self = this
+  $(".edit-source-button").on('click', function() {
+    var sourceToDelete = Number(this.value)
+    self.editSource(sourceToDelete)
+  })
+}
+
 ApplicationController.prototype.deleteSource = function(sourceToDelete) {
   var self = this
   $.ajax({
@@ -24,6 +32,16 @@ ApplicationController.prototype.deleteSource = function(sourceToDelete) {
     type: 'delete'
   }).done(function(deleted_source) {
     $('#source-'+sourceToDelete).remove()
+  })
+}
+
+ApplicationController.prototype.editSource = function(sourceToEdit) {
+  var self = this
+  $.ajax({
+    url: '/sources/'+sourceToEdit+'/edit',
+    type: 'get'
+  }).done(function(edited_source) {
+    $('body').html(edited_source)
   })
 }
 
@@ -47,4 +65,5 @@ $(document).ready(function() {
   applicationController = new ApplicationController
   applicationController.attachListenersToUpvoteButton()
   applicationController.attachListenersToDeleteButton()
+  applicationController.attachListenersToEditButton()
 })
