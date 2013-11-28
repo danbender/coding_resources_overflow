@@ -29,4 +29,19 @@ class SourcesController < ApplicationController
     render :json => {source_id: source_to_delete.id}
   end
 
+  def edit
+    p params
+    p '*' * 60
+    @source_to_edit = Source.find(params[:id].to_i)
+    render :partial => 'edit', :locals => {:source_to_edit => @source_to_edit}
+  end
+
+  def update
+    @source_to_edit = Source.find(params[:id].to_i)
+    @source_to_edit.title = params[:source][:title]
+    @source_to_edit.url = params[:source][:url]
+    @source_to_edit.save
+    redirect_to '/'
+  end
+
 end

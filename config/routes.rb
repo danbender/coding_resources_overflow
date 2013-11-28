@@ -1,6 +1,6 @@
 CodingResourcesOverflow::Application.routes.draw do
   root to: 'sources#index'
-  resources :sources, only: [ :index, :new, :create, :destroy ]
+  resources :sources
 
-  put 'sources/:id', to: 'sources#upvote', as: :source
+  put 'sources/:id', to: 'sources#upvote', as: :upvote_source
 end
