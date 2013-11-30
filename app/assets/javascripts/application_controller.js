@@ -48,7 +48,7 @@ ApplicationController.prototype.editSource = function(sourceToEdit) {
 ApplicationController.prototype.updateUpvoteCount = function(sourceId) {
   var self = this
   $.ajax({
-    url: '/sources/'+sourceId,
+    url: '/sources/'+sourceId+'/upvote',
     type: 'put'
   }).done(function(sorted_sources_list) {
     self.updateSourcesList(sorted_sources_list)
