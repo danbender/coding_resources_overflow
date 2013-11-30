@@ -7,6 +7,8 @@ ApplicationController.prototype.attachListenersToUpvoteButton = function() {
     var sourceId = Number(this.value)
     self.updateUpvoteCount(sourceId)
   })
+  self.attachListenersToEditButton()
+  self.attachListenersToDeleteButton()
 }
 
 ApplicationController.prototype.attachListenersToDeleteButton = function() {
