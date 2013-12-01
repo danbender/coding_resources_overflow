@@ -5,6 +5,7 @@ ApplicationController.prototype.attachListenersToAllButtons = function() {
   this.attachListenersToUpvoteButton()
   this.attachListenersToDeleteButton()
   this.attachListenersToEditButton()
+  this.attachListenersToCreateCommentButton()
 }
 
 ApplicationController.prototype.attachListenersToUpvoteButton = function() {
@@ -28,6 +29,22 @@ ApplicationController.prototype.attachListenersToEditButton = function() {
   $(".edit-source-button").on('click', function() {
     var sourceToDelete = Number(this.value)
     self.editSource(sourceToDelete)
+  })
+}
+
+ApplicationController.prototype.attachListenersToCreateCommentButton = function() {
+  self = this
+  $(".create-comment-button").on('click', function(e) {
+    e.preventDefault()
+    var sourceId = Number(this.value)
+    var $addCommentForm = $("#new_comment")
+    $.ajax({
+      url: $addCommentForm.prop('action'),
+      type: $addCommentForm.prop('method'),
+      data: $addCommentForm.serialize()
+    }).done(function(newComment) {
+      $('#comment-list').append(newComment)
+    })
   })
 }
 

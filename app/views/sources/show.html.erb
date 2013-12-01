@@ -2,5 +2,11 @@
 
 <%= form_for [@source, @comment] do |f| %>
   <%= f.text_area :body, class: 'comment-body' %>
-  <%= f.submit %>
+  <%= f.submit class: 'create-comment-button' %>
 <% end %>
+
+<ul id='comment-list'>
+  <% @associated_comments.each do |comment| %>
+    <li><%= comment.body %></li>
+  <% end %>
+</ul>
