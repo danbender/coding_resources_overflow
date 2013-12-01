@@ -30,8 +30,6 @@ class SourcesController < ApplicationController
   end
 
   def edit
-    p params
-    p '*' * 60
     @source_to_edit = Source.find(params[:id].to_i)
     render :partial => 'edit', :locals => {:source_to_edit => @source_to_edit}
   end
