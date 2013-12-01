@@ -1,4 +1,4 @@
-<h1><%= @source.title %></h1>
+<h1><%= link_to @source.title, url_with_protocol(@source.url), target: "_blank" %></h1>
 
 <%= form_for [@source, @comment] do |f| %>
   <%= f.text_area :body, class: 'comment-body' %>
