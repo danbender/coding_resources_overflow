@@ -9,16 +9,11 @@ class SourcesController < ApplicationController
 
   def create
     @source = Source.new(source_params)
-    params = {:source => {url: '', title: ''}}
     if @source.save
       redirect_to root_path
     else
-      flash[:error] = 'You fucked up, son!'
+      flash[:error] = 'Source could not be saved! Both title are url are require fields.'
     end
-    # @source.title = params[:source][:title]
-    # @source.url = params[:source][:url]
-    # @source.save
-    # redirect_to root_path
   end
 
   def upvote
@@ -48,7 +43,7 @@ class SourcesController < ApplicationController
     redirect_to root_path
   end
 
-protected
+private
   def source_params
     params.require(:source).permit(:url, :title)
   end
