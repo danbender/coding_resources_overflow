@@ -1,13 +1,18 @@
 var ApplicationController = function() {
 }
 
+ApplicationController.prototype.attachListenersToAllButtons = function() {
+  this.attachListenersToUpvoteButton()
+  this.attachListenersToDeleteButton()
+  this.attachListenersToEditButton()
+}
+
 ApplicationController.prototype.attachListenersToUpvoteButton = function() {
   self = this
   $(".upvote-button").on('click', function() {
     var sourceId = Number(this.value)
     self.updateUpvoteCount(sourceId)
   })
-  self.attachListenersToEditButton()
 }
 
 ApplicationController.prototype.attachListenersToDeleteButton = function() {
@@ -53,7 +58,7 @@ ApplicationController.prototype.updateUpvoteCount = function(sourceId) {
     type: 'put'
   }).done(function(sorted_sources_list) {
     self.updateSourcesList(sorted_sources_list)
-    self.attachListenersToUpvoteButton()
+    self.attachListenersToAllButtons()
   })
 }
 
@@ -64,7 +69,5 @@ ApplicationController.prototype.updateSourcesList = function(sorted_sources_list
 
 $(document).ready(function() {
   applicationController = new ApplicationController
-  applicationController.attachListenersToUpvoteButton()
-  applicationController.attachListenersToDeleteButton()
-  applicationController.attachListenersToEditButton()
+  applicationController.attachListenersToAllButtons()
 })

@@ -1,0 +1,6 @@
+<h1><%= @source.title %></h1>
+
+<%= form_for [@source, @comment] do |f| %>
+  <%= f.text_area :body, class: 'comment-body' %>
+  <%= f.submit %>
+<% end %>
