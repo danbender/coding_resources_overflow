@@ -43,7 +43,7 @@ ApplicationController.prototype.attachListenersToCreateCommentButton = function(
       type: $addCommentForm.prop('method'),
       data: $addCommentForm.serialize()
     }).done(function(newComment) {
-      $('#comment-list').append(newComment)
+      $('#comment-list').prepend(newComment)
     })
   })
 }
