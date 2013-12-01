@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.15'
 gem 'pg'
+gem 'pry'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -22,6 +23,7 @@ group :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'capybara'
+  gem 'factory_girl'
   gem 'database_cleaner'
   gem 'selenium-webdriver'
 end
