@@ -12,7 +12,7 @@ class SourcesController < ApplicationController
     @source.title = params[:source][:title]
     @source.url = params[:source][:url]
     @source.save
-    redirect_to "/"
+    redirect_to root_path
   end
 
   def upvote
@@ -39,7 +39,7 @@ class SourcesController < ApplicationController
     @source_to_edit.title = params[:source][:title]
     @source_to_edit.url = params[:source][:url]
     @source_to_edit.save
-    redirect_to '/'
+    redirect_to root_path
   end
 
 end
