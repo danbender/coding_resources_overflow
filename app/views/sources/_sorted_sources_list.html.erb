@@ -1,9 +1,12 @@
-<% @sorted_sources.each do |source| %>
-  <ul id="source-<%=source.id%>">
-    <li ><%= link_to source.title, url_with_protocol(source.url), target: "_blank", value: "#{source.id}" %></li>
-    <li class="source-<%=source.id%>" class="upvote-count"><%= source.upvote_count %></li>
-    <li><%= button_tag "Up!", class: "upvote-button", value: "#{source.id}" %></li>
-    <li><%= button_tag "✖", class: "delete-button", value: "#{source.id}" %></li>
-    <li><%= button_tag "Edit", class: "edit-source-button", value: "#{source.id}" %></li>
-  </ul>
+\
+<% if @sorted_sources %>
+  <% @sorted_sources.each do |source| %>
+    <ul id="source-<%=source.id%>">
+      <li ><%= link_to source.title, url_with_protocol(source.url), target: "_blank", value: "#{source.id}" %></li>
+      <li class="source-<%=source.id%>" class="upvote-count"><%= source.upvote_count %></li>
+      <li><%= button_tag "Up!", class: "upvote-button", value: "#{source.id}" %></li>
+      <li><%= button_tag "✖", class: "delete-button", value: "#{source.id}" %></li>
+      <li><%= button_tag "Edit", class: "edit-source-button", value: "#{source.id}" %></li>
+    </ul>
+  <% end %>
 <% end %>

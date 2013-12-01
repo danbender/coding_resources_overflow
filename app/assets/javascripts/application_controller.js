@@ -13,7 +13,7 @@ ApplicationController.prototype.attachListenersToUpvoteButton = function() {
 
 ApplicationController.prototype.attachListenersToDeleteButton = function() {
   self = this
-  $(".delete-button").on('click', function() {
+  $(".delete-button").on('click', function(e) {
     var sourceToDelete = Number(this.value)
     self.deleteSource(sourceToDelete)
   })
