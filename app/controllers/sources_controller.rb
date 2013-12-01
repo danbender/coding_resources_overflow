@@ -17,6 +17,12 @@ class SourcesController < ApplicationController
     end
   end
 
+  def show
+    @source = Source.find(params[:id])
+    @comment = Comment.new
+    @associated_comments = @source.comments
+  end
+
   def upvote
     source = Source.find(params[:id])
     source.upvote_count += 1
