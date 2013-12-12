@@ -20,7 +20,7 @@ class SourcesController < ApplicationController
   def show
     @source = Source.find(params[:id])
     @comment = Comment.new
-    @associated_comments = @source.comments
+    @associated_comments = Comment.where(:source_id => 2).order('updated_at DESC')
   end
 
   def upvote
