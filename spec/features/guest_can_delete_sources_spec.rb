@@ -8,7 +8,7 @@ feature 'delete a source' do
   context 'guest can delete a source' do
     it "allows guests to delete a source", :js=>true do
       visit root_path
-      click_button('✖')
+      find('.delete-button').click
       page.should_not have_content('Javascript is awesome')
     end
   end
