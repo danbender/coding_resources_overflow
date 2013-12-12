@@ -12,7 +12,7 @@ class SourcesController < ApplicationController
     if @source.save
       redirect_to root_path
     else
-      flash[:error] = 'Source could not be saved! Both title are url are required fields.'
+      flash[:error] = 'Source could not be saved! Both title and url are required fields.'
       redirect_to new_source_path
     end
   end
