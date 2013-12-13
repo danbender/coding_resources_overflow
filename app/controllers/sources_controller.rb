@@ -9,7 +9,8 @@ class SourcesController < ApplicationController
 
   def create
     @source = Source.new(source_params)
-    @source.tag_list.add(params[:source][:tag_list])
+    @tag_list = params[:source][:tag_list].split(', ')
+    @tag_list.each {|tag| @source.tag_list.add(tag)} if @tag_list.length > 0
     if @source.save
       redirect_to root_path
     else
