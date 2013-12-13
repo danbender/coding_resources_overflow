@@ -9,8 +9,11 @@ class SourcesController < ApplicationController
 
   def create
     @source = Source.new(source_params)
-    @tag_list = params[:source][:tag_list].split(', ')
-    @tag_list.each {|tag| @source.tag_list.add(tag)} if @tag_list.length > 0
+    user_input_tags = params[:source][:tag_list]
+    if tag_list_has_contents?(user_input_tags)
+      tag_list = create_tag_list_array(user_input_tags)
+      assign_tags_to_source(@source, tag_list)
+    end
     if @source.save
       redirect_to root_path
     else
@@ -55,5 +58,17 @@ class SourcesController < ApplicationController
 private
   def source_params
     params.require(:source).permit(:url, :title)
+  end
+
+  def create_tag_list_array(tag_list_string)
+    tag_list_string.split(', ')
+  end
+
+  def assign_tags_to_source(source, list_of_tags)
+    list_of_tags.each {|tag| source.tag_list.add(tag)}
+  end
+
+  def tag_list_has_contents?(tag_list)
+    tag_list.length > 0
   end
 end
