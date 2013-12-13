@@ -3,7 +3,7 @@ class Source < ActiveRecord::Base
   validates :title, presence: true, uniqueness: true
   validates :url, presence: true
 
-  act_as_taggable
+  acts_as_taggable_on :tags
 
   has_many :comments
 end
