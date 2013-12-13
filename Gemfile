@@ -2,9 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.15'
 gem 'pg'
-gem 'pry'
 gem 'strong_parameters'
-gem 'debugger'
+gem 'acts-as-taggable-on'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

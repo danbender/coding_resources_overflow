@@ -3,7 +3,9 @@
 <%= form_for @source_to_edit do |f| %>
   <%= f.label :title, value: @source_to_edit.title %>
   <%= f.text_field :title %>
-  <%= f.label :url, value: @source_to_edit.title %>
+  <%= f.label :tag_list, value: @source_to_edit.tag_list.join(', ') %>
+  <%= f.text_field :tag_list %>
+  <%= f.label :url, value: @source_to_edit.url %>
   <%= f.text_field :url %>
   <%= f.submit %>
 <% end %>
