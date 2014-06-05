@@ -1,6 +1,12 @@
 class SourcesController < ApplicationController
   def index
     @sorted_sources = Source.order('upvote_count DESC')
+
+    if params[:tag]
+      @sorted_sources = Source.tagged_with(params[:tag])
+    else
+      @sorted_sources = Source.all
+    end
   end
 
   def new

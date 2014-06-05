@@ -5,5 +5,7 @@ CodingResourcesOverflow::Application.routes.draw do
     resources :comments, only: [ :index, :create ]
   end
 
+  get 'tags/:tag', to: 'sources#index', as: :tag
+
   put 'sources/:id/upvote', to: 'sources#upvote', as: :upvote_source
 end
