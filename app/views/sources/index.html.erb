@@ -1,4 +1,11 @@
 <h1>source#index</h1>
+
+<div id="tag_cloud">
+  <% tag_cloud Source.tag_counts, %w[s m l] do |tag, css_class| %>
+    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+  <% end %>
+</div>
+
 <%= link_to "Add a source", new_source_path %>
 
 <div id='list-of-sources'>
